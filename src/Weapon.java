@@ -15,22 +15,22 @@ public class Weapon {
 	}
 	
 	
-	public String getWeapon_name() {
+	public String getWeapon() {
 		return weapon_name;
 	}
-	public void setWeapon_name(String weapon_name) {
-		this.weapon_name = weapon_name;
+	public void setWeapon(String name) {
+		this.weapon_name = name;
 	}
-	public int getAttack_max() {
+	public int getAttackMax() {
 		return attack_max;
 	}
-	public void setAttack_max(int attack_max) {
+	public void setAttackMax(int attack_max) {
 		this.attack_max = attack_max;
 	}
-	public int getAttack_min() {
+	public int getAttackMin() {
 		return attack_min;
 	}
-	public void setAttack_min(int attack_min) {
+	public void setAttackMin(int attack_min) {
 		this.attack_min = attack_min;
 	}
 
