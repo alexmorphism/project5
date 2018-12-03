@@ -3,14 +3,25 @@ public class Player {
 	private String character;
 	private int health;
 	private Weapon weapon;
+	private int xLoc;
+	private int yLoc;
 	
-	public Player(String character, int health, Weapon weapon) {
-		super();
+	public Player(String character, int health, Weapon weapon, int x, int y) {
 		this.character = character;
 		this.health = health;
 		this.weapon = weapon;
+		this.xLoc = x;
+		this.yLoc = y;
 	}
 
+	public int getXloc(){
+		return xLoc;
+	}
+	
+	public int getYloc(){
+		return yLoc;
+	}
+	
 	public String getCharacter() {
 		return character;
 	}
@@ -37,7 +48,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [character=" + character + ", health=" + health + ", weapon=" + weapon + "]";
+		return character + ", " + getWeapon().getWeapon();
 	}
 
 	@Override

@@ -1,43 +1,28 @@
 
 public class Weapon {
 
-	private String weapon_name;
-	private int attack_max;
-	private int attack_min;
+	private String weaponName;
+	private int attackVal;
 	
 	
 	
-	public Weapon(String weapon_name, int attack_max, int attack_min) {
-		super();
-		this.weapon_name = weapon_name;
-		this.attack_max = attack_max;
-		this.attack_min = attack_min;
+	public Weapon(String name, int val) {
+		weaponName = name;
+		attackVal = val;
 	}
 	
 	
 	public String getWeapon() {
-		return weapon_name;
+		return weaponName;
 	}
 	public void setWeapon(String name) {
-		this.weapon_name = name;
-	}
-	public int getAttackMax() {
-		return attack_max;
-	}
-	public void setAttackMax(int attack_max) {
-		this.attack_max = attack_max;
-	}
-	public int getAttackMin() {
-		return attack_min;
-	}
-	public void setAttackMin(int attack_min) {
-		this.attack_min = attack_min;
+		this.weaponName = name;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Weapon [weapon_name=" + weapon_name + ", attack_max=" + attack_max + ", attack_min=" + attack_min + "]";
+		return "Weapon name = " + weaponName + "\n Attack val" + attackVal;
 	}
 
 
@@ -45,9 +30,8 @@ public class Weapon {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + attack_max;
-		result = prime * result + attack_min;
-		result = prime * result + ((weapon_name == null) ? 0 : weapon_name.hashCode());
+		result = prime * result + attackVal;
+		result = prime * result + ((weaponName == null) ? 0 : weaponName.hashCode());
 		return result;
 	}
 
@@ -61,17 +45,16 @@ public class Weapon {
 		if (getClass() != obj.getClass())
 			return false;
 		Weapon other = (Weapon) obj;
-		if (attack_max != other.attack_max)
+		if (attackVal != other.attackVal)
 			return false;
-		if (attack_min != other.attack_min)
-			return false;
-		if (weapon_name == null) {
-			if (other.weapon_name != null)
+		if (weaponName == null) {
+			if (other.weaponName != null)
 				return false;
-		} else if (!weapon_name.equals(other.weapon_name))
+		} else if (!weaponName.equals(other.weaponName))
 			return false;
 		return true;
 	}
+
 	
 	
 	
