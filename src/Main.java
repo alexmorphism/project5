@@ -17,6 +17,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -63,10 +64,10 @@ public class Main extends Application {
 		FightRoom fr3 = new FightRoom(0, 400, 600, 400, "Room-3", Color.WHITE);
 		FightRoom fr4 = new FightRoom(600, 400, 600, 400, "Room-4", Color.WHITE);
 		
-		Canvas canvas = new Canvas(1200,825);
+		//Canvas canvas = new Canvas(1200,825);
 	
-		GraphicsContext gc = canvas.getGraphicsContext2D();
-		
+		//GraphicsContext gc = canvas.getGraphicsContext2D();
+		/*
 		//draw rooms
 		drawFightRoom(gc, fr1);
 		drawFightRoom(gc, fr2);
@@ -82,19 +83,21 @@ public class Main extends Application {
 		drawCharacter(gc, p7);
 		drawCharacter(gc, p8);
 		
+		*/
 		ProgressBar pb = new ProgressBar();
 		pb.setProgress(0.45);
 		pb.setLayoutX(100);
 		pb.setLayoutY(100);
+		
+		Pane pane = new Pane();
+		pane.getChildren().add(pb);
 		
 		HBox hbox = new HBox();
 		hbox.getChildren().add(addPlayerBtn);
 		VBox root = new VBox();
 		root.getChildren().add(menuBar);
 		root.getChildren().add(hbox);
-		root.getChildren().addAll(canvas, pb);
-		//root.getChildren().add(pb);
-		
+		root.getChildren().add(pane);
 		Scene scene = new Scene(root, 1200, 825);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(scene);

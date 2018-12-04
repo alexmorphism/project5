@@ -1,16 +1,24 @@
+import java.util.ArrayList;
 
 public class Weapon {
 
 	private String weaponName;
 	private int attackVal;
-	
-	
+	private ArrayList<Weapon> weaponList;
+
 	
 	public Weapon(String name, int val) {
 		weaponName = name;
 		attackVal = val;
 	}
 	
+	public void add(Weapon w){
+		weaponList.add(w);
+	}
+	
+	public Weapon getWeapon(int i){
+		return weaponList.get(i);
+	}
 	
 	public String getWeapon() {
 		return weaponName;
