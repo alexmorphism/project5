@@ -1,0 +1,6 @@
+Knife			35
+Revolver		50
+Rope			20
+Candlestick		10
+Lead_Pipe		25
+Wrench			30

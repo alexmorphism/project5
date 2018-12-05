@@ -1,19 +1,31 @@
+import javafx.scene.paint.Color;
+
 public class Player {
 
 	private String character;
-	private int health;
+	private double health;
 	private Weapon weapon;
 	private int xLoc;
 	private int yLoc;
+	private Color color;
 	
-	public Player(String character, int health, Weapon weapon, int x, int y) {
+	public Player(String character, double health, Weapon weapon, int x, int y, Color color) {
 		this.character = character;
 		this.health = health;
 		this.weapon = weapon;
 		this.xLoc = x;
 		this.yLoc = y;
+		this.color = color;
 	}
 
+	public Color getColor(){
+		return color;
+	}
+	
+	public void setColor(Color c){
+		color = c;
+	}
+	
 	public int getXloc(){
 		return xLoc;
 	}
@@ -30,11 +42,11 @@ public class Player {
 		this.character = character;
 	}
 
-	public int getHealth() {
+	public double getHealth() {
 		return health;
 	}
 
-	public void setHealth(int health) {
+	public void setHealth(double health) {
 		this.health = health;
 	}
 
@@ -55,9 +67,15 @@ public class Player {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((character == null) ? 0 : character.hashCode());
-		result = prime * result + health;
+		result = prime * result
+				+ ((character == null) ? 0 : character.hashCode());
+		result = prime * result + ((color == null) ? 0 : color.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(health);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((weapon == null) ? 0 : weapon.hashCode());
+		result = prime * result + xLoc;
+		result = prime * result + yLoc;
 		return result;
 	}
 
@@ -75,15 +93,29 @@ public class Player {
 				return false;
 		} else if (!character.equals(other.character))
 			return false;
-		if (health != other.health)
+		if (color == null) {
+			if (other.color != null)
+				return false;
+		} else if (!color.equals(other.color))
+			return false;
+		if (Double.doubleToLongBits(health) != Double
+				.doubleToLongBits(other.health))
 			return false;
 		if (weapon == null) {
 			if (other.weapon != null)
 				return false;
 		} else if (!weapon.equals(other.weapon))
 			return false;
+		if (xLoc != other.xLoc)
+			return false;
+		if (yLoc != other.yLoc)
+			return false;
 		return true;
 	}
+
+
+
+
 	
 	
 	

@@ -14,6 +14,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -23,15 +24,19 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
-
 public class Main extends Application {
+	Pane pane;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		Stage window = primaryStage;
-		
+		//Pane is being use to draw rooms and players
+		pane = new Pane();
 		Button addPlayerBtn = new Button("Add Players");
+		Button movePlayerBtn = new Button("Move Players");
 		// ****** Game menus **********//
 		MenuBar menuBar = new MenuBar();
 		Menu menuGame = new Menu("_Game");
@@ -50,55 +55,71 @@ public class Main extends Application {
 		//*******Game menu ends************//
 
 		Weapon w1 = new Weapon("Knife", 25);
-		Player p1 = new Player("p1", 100, w1, 150, 100);
-		Player p2 = new Player("p2", 100, w1, 400, 100);
-		Player p3 = new Player("p3", 100, w1, 800, 100);
-		Player p4 = new Player("p4", 100, w1, 1050, 100);
-		Player p5 = new Player("p5", 100, w1, 150, 500);
-		Player p6 = new Player("p6", 100, w1, 400, 500);
-		Player p7 = new Player("p7", 100, w1, 800, 500);
-		Player p8 = new Player("p8", 100, w1, 1050, 500);
+		Player p1 = new Player("Player1", 1, w1, 150, 100, Color.DARKBLUE);
+		Player p2 = new Player("Player2", 1, w1, 400, 100, Color.DARKCYAN);
+		Player p3 = new Player("Player3", 1, w1, 800, 100, Color.DARKGREEN);
+		Player p4 = new Player("Player4", 1, w1, 1050, 100, Color.DARKMAGENTA);
+		Player p5 = new Player("Player5", 1, w1, 150, 500, Color.BLACK);
+		Player p6 = new Player("Player6", 1, w1, 400, 500, Color.DARKRED);
+		Player p7 = new Player("Player7", 1, w1, 800, 500, Color.DARKVIOLET);
+		Player p8 = new Player("Player8", 1, w1, 1050, 500, Color.DARKGOLDENROD);
 		
-		FightRoom fr1 = new FightRoom(0, 0, 600, 400, "Room-1", Color.WHITE);
-		FightRoom fr2 = new FightRoom(600, 0, 600, 400, "Room-2", Color.WHITE);
-		FightRoom fr3 = new FightRoom(0, 400, 600, 400, "Room-3", Color.WHITE);
-		FightRoom fr4 = new FightRoom(600, 400, 600, 400, "Room-4", Color.WHITE);
+		Player p9  = new Player("Player", 1, w1, 150, 250, Color.DARKBLUE);
+		Player p10 = new Player("Player2", 1, w1, 400, 250, Color.DARKCYAN);
+		Player p11 = new Player("Player3", 1, w1, 800, 250, Color.DARKGREEN);
+		Player p12 = new Player("Player4", 1, w1, 1050, 250, Color.DARKMAGENTA);
+		Player p13 = new Player("Player5", 1, w1, 150, 650, Color.BLACK);
+		Player p14 = new Player("Player6", 1, w1, 400, 650, Color.DARKRED);
+		Player p15 = new Player("Player7", 1, w1, 800, 650, Color.DARKVIOLET);
+		Player p16 = new Player("Player8", 1, w1, 1050, 650, Color.DARKGOLDENROD);
 		
-		//Canvas canvas = new Canvas(1200,825);
-	
-		//GraphicsContext gc = canvas.getGraphicsContext2D();
-		/*
-		//draw rooms
-		drawFightRoom(gc, fr1);
-		drawFightRoom(gc, fr2);
-		drawFightRoom(gc, fr3);
-		drawFightRoom(gc, fr4);
-		//draw characters
-		drawCharacter(gc, p1);
-		drawCharacter(gc, p2);
-		drawCharacter(gc, p3);
-		drawCharacter(gc, p4);
-		drawCharacter(gc, p5);
-		drawCharacter(gc, p6);
-		drawCharacter(gc, p7);
-		drawCharacter(gc, p8);
+		FightRoom fr1 = new FightRoom(0, 0, 600, 375, "Room-1", Color.BLACK);
+		FightRoom fr2 = new FightRoom(600, 0, 600, 375, "Room-2", Color.BLACK);
+		FightRoom fr3 = new FightRoom(0, 375, 600, 375, "Room-3", Color.BLACK);
+		FightRoom fr4 = new FightRoom(600, 375, 600, 375, "Room-4", Color.BLACK);
+
+		//**************LISTENERS*****************//
+		addPlayerBtn.setOnAction(e->{
+			pane.getChildren().add(drawCharacter(p1));
+			pane.getChildren().add(drawCharacter(p2));
+			pane.getChildren().add(drawCharacter(p3));
+			pane.getChildren().add(drawCharacter(p4));
+			pane.getChildren().add(drawCharacter(p5));
+			pane.getChildren().add(drawCharacter(p6));
+			pane.getChildren().add(drawCharacter(p7));
+			pane.getChildren().add(drawCharacter(p8));
+			pane.getChildren().add(drawCharacter(p9));
+			pane.getChildren().add(drawCharacter(p10));
+			pane.getChildren().add(drawCharacter(p11));
+			pane.getChildren().add(drawCharacter(p12));
+			pane.getChildren().add(drawCharacter(p13));
+			pane.getChildren().add(drawCharacter(p14));
+			pane.getChildren().add(drawCharacter(p15));
+			pane.getChildren().add(drawCharacter(p16));
+		});
 		
-		*/
-		ProgressBar pb = new ProgressBar();
-		pb.setProgress(0.45);
-		pb.setLayoutX(100);
-		pb.setLayoutY(100);
+		movePlayerBtn.setOnAction(e->{
+			
+		});
 		
-		Pane pane = new Pane();
-		pane.getChildren().add(pb);
-		
+		//draw Fighting rooms
+		pane.getChildren().add(drawFightRoom(fr1));
+		pane.getChildren().add(drawFightRoom(fr2));
+		pane.getChildren().add(drawFightRoom(fr3));
+		pane.getChildren().add(drawFightRoom(fr4));
+
+		//Horizontal Box contains the buttons
 		HBox hbox = new HBox();
 		hbox.getChildren().add(addPlayerBtn);
+		hbox.getChildren().add(movePlayerBtn);
+		
+		//Vertical Box "root" contains the Menu Bar, HBox and Pane.
 		VBox root = new VBox();
 		root.getChildren().add(menuBar);
 		root.getChildren().add(hbox);
 		root.getChildren().add(pane);
-		Scene scene = new Scene(root, 1200, 825);
+		
+		Scene scene = new Scene(root, 1200, 800);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(scene);
 		window.show();
@@ -107,18 +128,36 @@ public class Main extends Application {
 	/*
 	 * Draws a character in the canvas based on the player information.
 	 */
-	public void drawCharacter(GraphicsContext gc, Player p){
-		
-		gc.fillOval(p.getXloc(), p.getYloc(), 30, 30);
-		gc.fillText(p.toString(), p.getXloc(), p.getYloc() -10);
+	public Group drawCharacter(Player p){
+		Group g = new Group();
+		Label label = new Label(p.toString());
+		label.setLayoutX(p.getXloc()-20);
+		label.setLayoutY(p.getYloc()-30);
+		//ProgressBar pb = new ProgressBar();
+		//pb.setProgress(p.getHealth());
+		//pb.setLayoutX(p.getXloc()-15);
+		//pb.setLayoutY(p.getYloc()-50);
+		Ellipse head = new Ellipse(10, 10);
+		head.setFill(p.getColor());
+		head.setLayoutX(p.getXloc());
+		head.setLayoutY(p.getYloc());
+		g.getChildren().addAll(head, label);
+		return g;
 	}
 	
 	/*
-	 * Draw fighting rooms on canvas.
+	 * Draw fighting rooms
 	 */
-	public void drawFightRoom(GraphicsContext gc, FightRoom fr){
-		gc.strokeRect(fr.getX(), fr.getY(), fr.getWidth(), fr.getLength());
-		gc.fillText(fr.getRoomName(), fr.getX()+300, fr.getY() + 20);
+	public Group drawFightRoom(FightRoom fr){
+		Group g = new Group();
+		Rectangle r = new Rectangle(fr.getWidth()-5, fr.getLength()-5);
+		r.setFill(Color.TRANSPARENT);
+		r.setStroke(fr.getColor());
+		r.setStrokeWidth(5);
+		r.setLayoutX(fr.getX());
+		r.setLayoutY(fr.getY()+3);
+		g.getChildren().add(r);
+		return g;
 	}
 	
 	public static void main(String[] args) {
@@ -131,22 +170,5 @@ public class Main extends Application {
 //	iview1.setFitWidth(50);
 //	iview1.setX(200);
 //	iview1.setY(100);
-//	iview1.setPreserveRatio(false);
-	
-//	TilePane tile1 = new TilePane();
-//	tile1.setHgap(30);
-//	tile1.setVgap(30);
-//	tile1.setPadding(new Insets(5,5,5,30));
-	
-	
-
-// ******* Creates Rectangles *******//
-//Rectangle r1 = new Rectangle(550,350);
-//r1.setFill(Color.DARKGRAY);
-//r1.setX(90);
-//Rectangle r2 = new Rectangle(50,50);
-//r2.setFill(Color.LIGHTGRAY);
-//StackPane stack = new StackPane(r1);
-/////	
-
+//	iview1.setPreserveRatio(false);	
 }
