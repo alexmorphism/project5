@@ -65,6 +65,8 @@ public class FightRoom {
 		this.color = c;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "Room name: " + roomName + "\nX location: " + x + "\nY location: " + y + "\nWidth: " + width + "\nLength: " + length +

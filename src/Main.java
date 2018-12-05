@@ -102,6 +102,9 @@ public class Main extends Application {
 			
 		});
 		
+		
+		
+		
 		//draw Fighting rooms
 		pane.getChildren().add(drawFightRoom(fr1));
 		pane.getChildren().add(drawFightRoom(fr2));
@@ -120,7 +123,7 @@ public class Main extends Application {
 		root.getChildren().add(pane);
 		
 		Scene scene = new Scene(root, 1200, 800);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(scene);
 		window.show();
 	}
@@ -142,6 +145,7 @@ public class Main extends Application {
 		head.setLayoutX(p.getXloc());
 		head.setLayoutY(p.getYloc());
 		g.getChildren().addAll(head, label);
+		System.out.println("hash code" + p.hashCode());
 		return g;
 	}
 	
